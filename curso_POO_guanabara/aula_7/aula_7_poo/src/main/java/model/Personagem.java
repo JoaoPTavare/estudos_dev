@@ -13,6 +13,7 @@ public class Personagem {
     private float power;
     private float shild;
     private  int level;
+    private float hp;
 
 
 
@@ -25,19 +26,20 @@ public class Personagem {
     public Personagem() {
     }
 
-    public Personagem(String nome, String tipo, int idade, float altura, float peso, String categoria, int wins, int lose, int empate, float power, float shild, int level) {
+    public Personagem(String nome, String tipo, int idade, float altura, float peso, String categoria, int wins, int lose, int empate, float power, float shild, int level, float hp) {
         this.nome = nome;
         this.tipo = tipo;
         this.idade = idade;
         this.altura = altura;
         this.peso = peso;
-        setCategoria(categoria);
+        setCategoria();
         this.wins = wins;
         this.lose = lose;
         this.empate = empate;
         this.power = power;
         this.shild = shild;
         this.level = level;
+        this.hp = hp;
     }
 
 
@@ -79,23 +81,27 @@ public class Personagem {
 
     public void setPeso(float peso) {
         this.peso = peso;
+        this.setCategoria();
     }
 
-    public String getCategoria() {
+    public String getCategoria()
+    {
         return categoria;
+
     }
 
-    public void setCategoria(String categoria) {
-        if (peso <= 52){
-
-        } else if (peso > 52 && peso <=  80) {
-
-        } else if (peso > 80 && peso<= 99) {
-
-        }else if (peso > 99 && peso <= 112){
-
+    public void setCategoria() {
+        this.categoria = categoria;
+        if (peso < 52){
+            categoria = "Invalido";
+        } else if (peso > 52 && peso <=  70) {
+            categoria = "Peso pena";
+        }else if (peso > 70 && peso <= 80){
+            categoria = "Peso medio";
+        } else if (peso > 80 && peso <= 99) {
+            categoria = "Peso pessado";
         }else {
-
+            categoria = "Invalido";
         }
     }
 
@@ -145,5 +151,14 @@ public class Personagem {
 
     public void setLevel(int level) {
         this.level = level;
+    }
+
+
+    public float getHp() {
+        return hp;
+    }
+
+    public void setHp(float hp) {
+        this.hp = hp;
     }
 }
